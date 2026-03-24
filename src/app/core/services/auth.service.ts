@@ -2,6 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject, tap } from 'rxjs';
 import { User, AuthResponse } from '../models';
+import {environment} from '../../../environments/environment'
 
 /**
  * AuthService - Gestión de autenticación
@@ -13,6 +14,8 @@ import { User, AuthResponse } from '../models';
 export class AuthService {
   private readonly http = inject(HttpClient);
   private readonly apiUrl = '/api/users';
+
+  private baseUrl = `${environment.apiUrl}/auth`
 
   // Observable para el usuario autenticado
   private userSubject = new BehaviorSubject<User | null>(null);

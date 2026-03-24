@@ -2,6 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Book } from '../models';
+import { environment } from '../../../environments/environment';
 
 /**
  * BookService - Gestión de libros
@@ -18,7 +19,7 @@ import { Book } from '../models';
 })
 export class BookService {
   private readonly http = inject(HttpClient);
-  private readonly apiUrl = 'http://localhost:8080/api/books';
+  private readonly apiUrl = `${environment.apiUrl}/api/books`;
 
   /**
    * GET /api/books - Obtener todos los libros del usuario
